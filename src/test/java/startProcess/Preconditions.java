@@ -21,16 +21,16 @@ public class Preconditions {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     protected MainPage mainPage=new MainPage(driver);
-
+    //password 0000000
     @DataProvider(name="urlOnlineSupportCheck")
-    public Object[][] createData() {
+    public Object[][] messendgerClickWordCheck() {
         return new Object[][]{
                {"//div[@class='dropdown-content-rngst']/a[1]","telegram.me"},
                {"//div[@class='dropdown-content-rngst']/a[2]","viber"}
         };
     }
     @DataProvider(name="searchResults")
-    public Object[][] createData1() {
+    public Object[][] searchResultWordCheckWorld() {
         return new Object[][]{
                 {"кішка","кішка"},
                /* {"підгузок","підгузок"},

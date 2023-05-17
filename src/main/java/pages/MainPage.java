@@ -13,6 +13,7 @@ public class MainPage extends BasePage{
     Waiters waiters=new Waiters(driver);
     public MainPage(WebDriver driver) {super(driver);}
     private static class Locators{
+        //перевірка зворотнього дзвінку
         private final static WebElement callMeButton= elements.findElement(By.xpath("//a[@class='call-me-btn']"));
        private final static WebElement inputTelephoneNumber =elements.findElement(By.xpath("//input[@id='phoneCallback']"));
        private final static WebElement vidpravityButton =elements.findElement(By.xpath("//button[@id='popup-callback-btn']"));
@@ -23,6 +24,16 @@ public class MainPage extends BasePage{
         private final static  WebElement seachLine =elements.findElementByXpath("//input[@id='search-form__input']");
         private final static WebElement positiveSeachText=elements.findElementByXpath("//h1[@class='title']");
         private final static WebElement negativeSeachText= elements.findElementByXpath("//div[@class='l-search-empty']/mark");
+//перевірка перемикача міста
+        private final static By cityNameClicker=By.xpath("//a[@class='current-city-name']");
+        private final static By linksCityKiyv=By.xpath("//a[@data-id='9787']");
+        private final static By linksCityDnipro=By.xpath("//a[@data-id='6500']");
+        private final static By linksCityKharkiv=By.xpath("//a[@data-id='25121']");
+        private final static By linksCityZaporiggya=By.xpath("//a[@data-id='8008']");
+        private final static By linksCityLviv=By.xpath("//a[@data-id='13242']");
+//перевірити що логотип веде до головної сторінки
+
+
 
 
     }
@@ -31,6 +42,16 @@ public class MainPage extends BasePage{
         public final static String ConformationText="Ми отримали вашу заявку. Будь ласка, дайте нам ще трохи часу і ми передзвонимо!";
         public final static By positiveSeachText=By.xpath("//h1[@class='title']");
         public final static By negativeSeachText=By.xpath("//div[@class='l-search-empty']/mark");
+//перевірити що логотип веде до оловної сторінки
+        private final static String urlCheckMainLogo="https://pampik.com/ua/brand/HiPP";
+        private final static String urlCheckMainLogo1="https://pampik.com/ua/info";
+        private final static String urlCheckMainLogo2="";
+        private final static String urlCheckMainLogo3="";
+        private final static String urlCheckMainLogo4="";
+        private final static String urlCheckMainLogo5="";
+        private final static String urlCheckMainLogo6="";
+
+
       }
 
     public void  openPage(){driver.get(Labels.url);}
@@ -62,8 +83,11 @@ public class MainPage extends BasePage{
        elements.clickElement(Locators.seachLine);
         action.sendKeysWebEl(Locators.seachLine, searchWord);
         action.sendKeysEnter();
-
      }
+    public String getTextfromElement(By xpath){
+        String TextfromElement=elements.getElementText(xpath);
+        return TextfromElement;
+    }
      public String getTextPositiveSeach(String searchWord){
        String resultOfPositiveSeach=Locators.positiveSeachText.getText();
        return resultOfPositiveSeach;
@@ -72,6 +96,12 @@ public class MainPage extends BasePage{
         String resultOfNegativeSeach=Locators.negativeSeachText.getText();
         return resultOfNegativeSeach;
     }
+
+    public void clickOnCity(String xpathCytyName){
+     elements.clickElement(Locators.cityNameClicker);
+     elements.clickElementByXpath(xpathCytyName);
+    }
+
 
 
 }

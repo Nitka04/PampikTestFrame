@@ -78,4 +78,9 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
     public boolean isElementDisplayd(String xpath){
        return findElementByXpath(xpath).isDisplayed();
     }
+
+    public  boolean isSelected(String xpath){return  findElementByXpath(xpath).isSelected();}
+
+
+
 }

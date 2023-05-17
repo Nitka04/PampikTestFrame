@@ -19,8 +19,11 @@ public class Assertions {
     }
 
 
-    public void elementIsDisplayd(String xpath){
+    public void isDisplayd(String xpath){
         assertTrue(elements.isElementDisplayd(xpath),"The text is not displayed.");
+    }
+    public void isSelected(String xpath){
+        assertTrue(elements.isSelected(xpath),"The text is not selected.");
     }
 
     public  void equalsOfTexts(String xpath,String expectedText){
