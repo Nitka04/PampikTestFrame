@@ -1,6 +1,8 @@
 package functions;
 
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,10 +27,27 @@ public class Action {
     public void dragNDrop(String xpath1,String xpath2){
         actions.dragAndDrop(elements.findElementByXpath(xpath1), elements.findElementByXpath(xpath2)).perform();
     }
-    public void sendKeys(WebElement element,String string){
+    public void sendKeysWebEl(WebElement element,String string){
         waiters.waitForVisabilityOfElement(element);
-        actions.sendKeys(element,string).build().perform();
         logger.info("Send keys: "+string);
+        actions.sendKeys(element,string).build().perform();
+
+    }
+    public void sendKeysBy(By by,String string){
+        waiters.waitForVisabilityOfElement(by);
+        WebElement element=elements.findElement(by);
+        logger.info("Send keys: "+string);
+        actions.sendKeys(element, string).build().perform();
+    }
+   /* public void sendKeysButton(String nameOfButton) throws InterruptedException {
+        Thread.sleep(2000);
+        logger.info("Send keys: "+nameOfButton);
+        actions.sendKeys((nameOfButton.toUpperCase())).build().perform();
+    }*/
+    public void sendKeysEnter() throws InterruptedException {
+        Thread.sleep(1000);
+        logger.info("Button Enter send.");
+        actions.sendKeys(Keys.ENTER).build().perform();
     }
 
 

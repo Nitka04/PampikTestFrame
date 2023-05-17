@@ -33,6 +33,11 @@ public class Assertions {
         assertEquals(actual, expected, "The int not equals of "+expected+"the real c are:"+actual);
     }
 
+    public  void containsSomeText(String xpath,String expectedString){
+        assertTrue(xpath.contains(expectedString), "String did not contain the required text:"+expectedString);
+    }
+
+
 
 
 }

@@ -8,14 +8,12 @@ import functions.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.MainPage;
 
-public class Start {
-    static final Logger logger= LoggerFactory.getLogger(Start.class);
+public class Preconditions {
+    static final Logger logger= LoggerFactory.getLogger(Preconditions.class);
     protected WebDriver driver= DriverBase.startChromeDriver();
     protected BasePage basePage=new BasePage(driver);
     protected Action action=new Action(driver);
@@ -27,19 +25,35 @@ public class Start {
     @DataProvider(name="urlOnlineSupportCheck")
     public Object[][] createData() {
         return new Object[][]{
-                {"https://telegram.me/helponlinebot?start=uBki1eoAbSgeXwox9KNm1QwvidBtl4m8PCR6-qdL6hMKtR6g"},
-                {"viber://pa?chatURI=onlinesupportbot&context=uBki1eoAbSgeXwox9KNm1QwvidBtl4m8PCR6-qdL6hMKtR6g"}
+               {"//div[@class='dropdown-content-rngst']/a[1]","telegram.me"},
+               {"//div[@class='dropdown-content-rngst']/a[2]","viber"}
+        };
+    }
+    @DataProvider(name="searchResults")
+    public Object[][] createData1() {
+        return new Object[][]{
+                {"кішка","кішка"},
+               /* {"підгузок","підгузок"},
+                {"!ложка","!ложка"},*/
+                {"іапііп","іапііп"},
+                {"8776543","8776543"},
+               /* {"Vfif","Vfif"},
+                {"     ",""},
+                {"cat","cat"},
+                {"&&&","&&&"},
+                {" кошка","кошка"},*/
         };
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void openPages(){
-        logger.info("Page open:");
+        logger.info("OPEN page");
         mainPage.openPage();
     }
     @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
-        driver.close();
+        driver.quit();
     }
+
 }
