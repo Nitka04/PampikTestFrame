@@ -35,7 +35,7 @@ public class MainPageTests extends Preconditions {
               }
           }
 
-          //а єто поппітка его переписать то же не работает
+          //а єто поппітка его переписать то же не работает через драйвер тоже не работает,  если негативній поиск висит
         /*  WebElement positiveSeachText=driver.findElement(MainPage.Labels.positiveSeachText);
 
          if(positiveSeachText.isDisplayed()==true){
