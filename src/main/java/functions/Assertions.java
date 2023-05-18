@@ -1,6 +1,9 @@
 package functions;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -39,6 +42,7 @@ public class Assertions {
     public  void containsSomeText(String xpath,String expectedString){
         assertTrue(xpath.contains(expectedString), "String did not contain the required text:"+expectedString);
     }
+
 
 
 

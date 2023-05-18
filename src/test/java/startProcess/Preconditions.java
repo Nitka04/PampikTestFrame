@@ -5,6 +5,7 @@ import functions.Action;
 import functions.Assertions;
 import functions.Elements;
 import functions.Waiters;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ public class Preconditions {
     public Object[][] messendgerClickWordCheck() {
         return new Object[][]{
                {"//div[@class='dropdown-content-rngst']/a[1]","telegram.me"},
-               {"//div[@class='dropdown-content-rngst']/a[2]","viber"}
+               {"//div[@class='dropdown-content-rngst']/a[2]","viber"}//в них не відкривається вікно вайберу ,тест зависає навіть не пише що не проходе
         };
     }
     @DataProvider(name="searchResults")
@@ -44,12 +45,38 @@ public class Preconditions {
                 {" кошка","кошка"},*/
         };
     }
+    @DataProvider(name="xpathCityName")
+    public Object[][] xpathCityName() {
+        return new Object[][]{
+                {"//a[@data-id='9787']"},
+                {"//a[@data-id='6500']"},
+                {"//a[@data-id='25121']"},
+                {"//a[@data-id='8008']"},
+                {"//a[@data-id='13242']"}
 
-    @BeforeMethod
+        };
+    }
+    @DataProvider(name="xpathCityNameCheckName")
+    public Object[][] xpathCityNameCheckName() {
+        return new Object[][]{
+                {"//a[@data-id='9787']","Kiyv"},
+                {"//a[@data-id='6500']","Dnipro"},
+                {"//a[@data-id='25121']","Kharkiv"},
+                {"//a[@data-id='8008']","Zaporiggya"},
+                {"//a[@data-id='13242']","Lviv"}
+
+        };
+    }
+
+    @BeforeMethod //скоріш за все потрібен @BeforeClass
     public void openPages(){
         logger.info("OPEN page");
         mainPage.openPage();
     }
+    @AfterMethod
+    public void ClosePages(){
+        logger.info("OPEN page");
+}
     @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
