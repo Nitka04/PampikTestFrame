@@ -47,7 +47,7 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
         public final static String ffffffffffff="//h1[@class='title']";
         public final static By negativeSeachText=By.xpath("//div[@class='l-search-empty']/mark");
 //перевірити що логотип веде до оловної сторінки
-        private final static String urlCheckMainLogo1="https://pampik.com/ua/brand/HiPP";
+        public final static String urlCheckMainLogo1="https://pampik.com/ua/brand/HiPP";
         private final static String urlCheckMainLogo5="https://pampik.com/ua/info";
         private final static String urlCheckMainLogo2="https://pampik.com/ua/category/hodunki-i-pryigunki";
         private final static String urlCheckMainLogo3="https://pampik.com/ua/category/byitovaya-himiya-i-uhod-za-domom";
@@ -80,8 +80,11 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
         set2.removeAll(set1);
         String descr2 = set2.iterator().next();
         driver.switchTo().window(descr2);
+        Thread.sleep(1000);
         String urlOfCurentPage = driver.getCurrentUrl();
+        System.out.println(urlOfCurentPage+" @@@@@@@@@@@@@@@");
         return urlOfCurentPage;
+
     }
 
      public void checkOfSearchResult(String searchWord) throws InterruptedException {
@@ -109,7 +112,15 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
      elements.clickElement(Locators.cityNameClicker);
      elements.clickElementByXpath(xpathCityName);
     }
+    public String getCityName(String nameCity) throws InterruptedException {
+        Thread.sleep(1000);
+        String cityName=elements.getElementTextWaitReturn(Locators.cityNameClicker,nameCity);
+        return cityName;
+    }
 
+    public void gotoAnotherUrlPage(String url){
+        driver.get(Labels.urlCheckMainLogo1);
 
+    }
 
 }

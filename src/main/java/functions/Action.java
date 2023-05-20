@@ -48,6 +48,7 @@ public class Action {
         Thread.sleep(1000);
         logger.info("Button Enter send.");
         actions.sendKeys(Keys.ENTER).build().perform();
+
     }
 
 

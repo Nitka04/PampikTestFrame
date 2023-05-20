@@ -7,23 +7,23 @@ import startProcess.Preconditions;
 import static org.testng.Assert.assertTrue;
 
 public class MainPageTests extends Preconditions {
-       @Test
+       @Test//WORKING
        public void TestOfBackCallConformation() throws InterruptedException {
            assertions.equalsOfText(mainPage.CallMeBackGetText("99 999 99 999"), MainPage.Labels.ConformationText);
 
        }
 
 
-       //ДАнній тест не відает негативній результат
+//ДАнній тест не відает негативній результат. На сайте кнпка связи повайбер не работает,и відает пустую страницу
+//и на данном єтапе тест и зависает ни негатива ни позитива просто висит.
        @Test(dataProvider = "urlOnlineSupportCheck")
     public void TestOfMessengerUrl(String xpath,String urlOnlineSupportCheck) throws InterruptedException {
-           mainPage.getUrlFromOpenWindow(xpath);
-            assertions.containsSomeText(mainPage.getUrlFromOpenWindow(xpath),urlOnlineSupportCheck);
+           assertions.containsSomeText( mainPage.getUrlFromOpenWindow(xpath),urlOnlineSupportCheck);
        }
 
-
-       //и данній тест не работает хотя сделан по примеру домашней роботе по хомке
-    //суть такая если введена "ересть": то должен пройти ассер по другой ссілке  и єто так же будет прохождение теста. А он не переходит на else
+//и данній тест не работает хотя сделан по примеру домашней роботе по хомке. При отсутсвии в первом окне резульата
+//он не переходит на второй єлемент поиска(не прорабатівает else)
+//суть такая если введена "ересть": то должен пройти ассер по другой ссілке  и єто так же будет прохождение теста
       @Test(dataProvider = "searchResults")
       public void TestofSearchResults(String searchWord, String expectedWord) throws InterruptedException, NoSuchElementException {
            mainPage.checkOfSearchResult(searchWord);
@@ -44,4 +44,16 @@ public class MainPageTests extends Preconditions {
         System.out.println("не видно  !!!!!!!!!!!!!!!!!!!!!!");
     }*/
       }
+      @Test(dataProvider = "xpathCityNameCheckName")//WORKING
+      public void checkCityNameTest(String xpathCityName,String cityName) throws InterruptedException {
+      mainPage.clickOnCity(xpathCityName);
+          assertions.equalsOfText(mainPage.getCityName(cityName),cityName );
+      }
+
+      @Test
+      public void checkClickToMainLogoGoToMainPage() throws InterruptedException {
+           mainPage.gotoAnotherUrlPage(MainPage.Labels.urlCheckMainLogo1);
+           Thread.sleep(2000);
+      }
+
 }

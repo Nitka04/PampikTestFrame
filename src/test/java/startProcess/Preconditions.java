@@ -45,26 +45,17 @@ public class Preconditions {
                 {" кошка","кошка"},*/
         };
     }
-    @DataProvider(name="xpathCityName")
-    public Object[][] xpathCityName() {
-        return new Object[][]{
-                {"//a[@data-id='9787']"},
-                {"//a[@data-id='6500']"},
-                {"//a[@data-id='25121']"},
-                {"//a[@data-id='8008']"},
-                {"//a[@data-id='13242']"}
 
-        };
-    }
+
     @DataProvider(name="xpathCityNameCheckName")
     public Object[][] xpathCityNameCheckName() {
         return new Object[][]{
-                {"//a[@data-id='9787']","Kiyv"},
-                {"//a[@data-id='6500']","Dnipro"},
-                {"//a[@data-id='25121']","Kharkiv"},
-                {"//a[@data-id='8008']","Zaporiggya"},
-                {"//a[@data-id='13242']","Lviv"}
-
+                {"//a[@data-id='9787']","Київ"},
+                {"//a[@data-id='17125']","Одеса"},
+                {"//a[@data-id='6500']","Дніпро"},
+                {"//a[@data-id='25121']","Харків"},
+                {"//a[@data-id='8008']","Запоріжжя"},
+                {"//a[@data-id='13242']","Львів"}
         };
     }
 

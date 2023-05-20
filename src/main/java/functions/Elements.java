@@ -45,8 +45,14 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
         return element.getText();
     }
     public String getElementText(By by){
-        waiters.waitForVisabilityOfElement(by);
-        logger.info("Getting text from element");
+       waiters.waitForVisabilityOfElement(by);
+        logger.info("Getting text from element.");
+        return driver.findElement(by).getText();
+    }
+    public String getElementTextWaitReturn(By by,String text){
+        /* waiters.waitForVisabilityOfElement(by);*/
+        waiters.waitFortextToBePresentInElementValue(by, text);
+        logger.info("Getting text from element:"+ text);
         return driver.findElement(by).getText();
     }
 
@@ -79,8 +85,13 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
        return findElementByXpath(xpath).isDisplayed();
     }
 
-    public  boolean isSelected(String xpath){return  findElementByXpath(xpath).isSelected();}
-
+    public  boolean isSelected(String xpath){
+         waiters.waitForVisabilityOfElement(By.xpath(xpath));
+       return  findElementByXpath(xpath).isSelected();}
+    public  boolean isSelectedWaiters(String xpath){
+    waiters.waitForElementSelectionStateToBe(By.xpath(xpath), true);
+     return findElementByXpath(xpath).isDisplayed();
+    }
 
 
 }
