@@ -5,7 +5,6 @@ import functions.Action;
 import functions.Assertions;
 import functions.Elements;
 import functions.Waiters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +12,8 @@ import org.testng.annotations.*;
 import pages.BasePage;
 import pages.MainPage;
 
-public class Preconditions {
-    static final Logger logger= LoggerFactory.getLogger(Preconditions.class);
+public class PreconditionsMainPageTest {
+    static final Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
     protected WebDriver driver= DriverBase.startChromeDriver();
     protected BasePage basePage=new BasePage(driver);
     protected Action action=new Action(driver);
@@ -58,11 +57,23 @@ public class Preconditions {
                 {"//a[@data-id='13242']","Львів"}
         };
     }
+    //перевірити що логотип веде до оловної сторінки
+    @DataProvider(name="urlPageForCheckLogo")
+    public Object[][] urls() {
+        return new Object[][]{
+                {"https://pampik.com/ua/brand/HiPP"},
+                {"https://pampik.com/ua/info"},
+                {"https://pampik.com/ua/category/hodunki-i-pryigunki"},
+                {"https://pampik.com/ua/category/byitovaya-himiya-i-uhod-za-domom"},
+                {"https://pampik.com/ua/catalog/konstruktor-lego-classic-bolshoy-nabor-dlya-tvorchestva-790-detaley-10698"}
+        };
+    }
 
-    @BeforeMethod //скоріш за все потрібен @BeforeClass
+    @BeforeMethod
     public void openPages(){
         logger.info("OPEN page");
         mainPage.openPage();
+
     }
     @AfterMethod
     public void ClosePages(){

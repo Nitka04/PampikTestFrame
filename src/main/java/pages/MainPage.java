@@ -14,11 +14,7 @@ import static org.testng.Assert.assertTrue;
 public class MainPage extends BasePage{
     Waiters waiters=new Waiters(driver);
     public MainPage(WebDriver driver) {super(driver);}
-    class NoSuchUrlException extends Exception {
-        public String getMessage() {
-            return "Wrong URL.";
-        }
-    }
+
     private static class Locators{
         //перевірка зворотнього дзвінку
         private final static By callMeButton= By.xpath("//a[@class='call-me-btn']");
@@ -46,14 +42,6 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
         public final static By positiveSeachText=By.xpath("//h1[@class='title']");
         public final static String ffffffffffff="//h1[@class='title']";
         public final static By negativeSeachText=By.xpath("//div[@class='l-search-empty']/mark");
-//перевірити що логотип веде до оловної сторінки
-        public final static String urlCheckMainLogo1="https://pampik.com/ua/brand/HiPP";
-        private final static String urlCheckMainLogo5="https://pampik.com/ua/info";
-        private final static String urlCheckMainLogo2="https://pampik.com/ua/category/hodunki-i-pryigunki";
-        private final static String urlCheckMainLogo3="https://pampik.com/ua/category/byitovaya-himiya-i-uhod-za-domom";
-        private final static String urlCheckMainLogo4="https://pampik.com/ua/catalog/konstruktor-lego-classic-bolshoy-nabor-dlya-tvorchestva-790-detaley-10698";
-
-
 
       }
 
@@ -118,9 +106,12 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
         return cityName;
     }
 
-    public void gotoAnotherUrlPage(String url){
-        driver.get(Labels.urlCheckMainLogo1);
-
+    public void gotoAnotherUrlPageAndClickLogo(String url){
+        driver.get(url);
+        elements.clickElement(Locators.mainLogo);
     }
+     public String getUrlFromCurrantPage(){
+       return driver.getCurrentUrl();
+     }
 
 }

@@ -11,11 +11,12 @@ public class RegestrationPage extends BasePage {
         public final static By inputPassword=By.xpath("//input[@type='password']");
 
 
-
     }
     public static class Labels{
         private final static String regestrationPage1 ="https://pampik.com/ua/account/login";
 
     }
     public void  openPage(){driver.get(Labels.regestrationPage1);}
+
+
 }

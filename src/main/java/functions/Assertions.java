@@ -43,6 +43,9 @@ public class Assertions {
     public  void containsSomeText(String xpath,String expectedString){
         assertTrue(xpath.contains(expectedString), "String did not contain the required text:"+expectedString);
     }
+    public  void equalsOfUrl(String urls,String expectedUrl){
+        assertEquals(urls, expectedUrl, "The url is not that expected."+expectedUrl+"the real text are:");
+    }
 
 
 

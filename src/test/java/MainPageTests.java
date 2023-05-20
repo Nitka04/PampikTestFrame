@@ -1,12 +1,11 @@
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.MainPage;
-import startProcess.Preconditions;
+import startProcess.PreconditionsMainPageTest;
 
 import static org.testng.Assert.assertTrue;
 
-public class MainPageTests extends Preconditions {
+public class MainPageTests extends PreconditionsMainPageTest {
        @Test//WORKING
        public void TestOfBackCallConformation() throws InterruptedException {
            assertions.equalsOfText(mainPage.CallMeBackGetText("99 999 99 999"), MainPage.Labels.ConformationText);
@@ -50,10 +49,10 @@ public class MainPageTests extends Preconditions {
           assertions.equalsOfText(mainPage.getCityName(cityName),cityName );
       }
 
-      @Test
-      public void checkClickToMainLogoGoToMainPage() throws InterruptedException {
-           mainPage.gotoAnotherUrlPage(MainPage.Labels.urlCheckMainLogo1);
-           Thread.sleep(2000);
+      @Test(dataProvider = "urlPageForCheckLogo")//WORKING
+      public void checkClickToMainLogoGoToMainPage(String url) throws InterruptedException {
+           mainPage.gotoAnotherUrlPageAndClickLogo(url);
+           assertions.equalsOfUrl(mainPage.getUrlFromCurrantPage(),"https://pampik.com/ua");
       }
 
 }
