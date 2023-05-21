@@ -1,11 +1,14 @@
 package pages;
 
 import com.google.inject.internal.ErrorsException;
+import functions.Elements;
 import functions.Waiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
@@ -13,6 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class MainPage extends BasePage{
     Waiters waiters=new Waiters(driver);
+    static final Logger logger = LoggerFactory.getLogger(MainPage.class);
     public MainPage(WebDriver driver) {super(driver);}
 
     private static class Locators{
@@ -25,15 +29,12 @@ public class MainPage extends BasePage{
         private final static By onlineSuppotButton = By.xpath("//div[@class='rngst_phone_body--tooltip rngst_phone_icon']");
 //перевірка результатів пошуку
         private final static  By seachLine =By.xpath("//input[@id='search-form__input']");
-        private final static By positiveSeachText=By.xpath("//h1[@class='title']");
+        private final static By positiveSeachText=By.tagName("h1");
         private final static By negativeSeachText= By.xpath("//div[@class='l-search-empty']/mark");
 //перевірка перемикача міста
-private final static By cityNameClicker=By.xpath("//a[@class='current-city-name']");
-
+        private final static By cityNameClicker=By.xpath("//a[@class='current-city-name']");
 //перевірити що логотип веде до головної сторінки
         private final static By mainLogo=By.xpath("//img[@class='js-logo']");
-
-
 
     }
     public static class Labels{
@@ -45,7 +46,9 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
 
       }
 
-    public void  openPage(){driver.get(Labels.url);}
+    public void  openPage(){
+        logger.info(Labels.url);
+        driver.get(Labels.url);}
 
     public String CallMeBackGetText(String telefonNumber) throws InterruptedException {
         elements.clickElement(Locators.callMeButton);
@@ -70,28 +73,24 @@ private final static By cityNameClicker=By.xpath("//a[@class='current-city-name'
         driver.switchTo().window(descr2);
         Thread.sleep(1000);
         String urlOfCurentPage = driver.getCurrentUrl();
-        System.out.println(urlOfCurentPage+" @@@@@@@@@@@@@@@");
         return urlOfCurentPage;
 
     }
-
      public void checkOfSearchResult(String searchWord) throws InterruptedException {
        elements.clickElement(Locators.seachLine);
         action.sendKeysBy(Locators.seachLine, searchWord);
         action.sendKeysEnter();
 
      }
-    public String getTextfromElement(By xpath){
-        String TextfromElement=elements.getElementText(xpath);
-        return TextfromElement;
-    }
      public String getTextPositiveSeach(String searchWord){
         WebElement positiveSeachText=elements.findElement(Locators.positiveSeachText);
+         logger.info("Get text from result search.");
        String resultOfPositiveSeach=positiveSeachText.getText();
        return resultOfPositiveSeach;
      }
     public String getTextNegativeSeach(String searchWord){
         WebElement negativeSeachText=elements.findElement(Locators.negativeSeachText);
+        logger.info("Get text from result search.");
         String resultOfNegativeSeach=negativeSeachText.getText();
         return resultOfNegativeSeach;
     }

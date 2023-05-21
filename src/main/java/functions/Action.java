@@ -14,7 +14,7 @@ public class Action {
         private final Actions actions;
         private final Waiters waiters;
         private final WebDriver driver;
-    static final Logger logger = LoggerFactory.getLogger(Elements.class);
+    static final Logger logger = LoggerFactory.getLogger(Action.class);
 
 
     public Action(WebDriver driver) {

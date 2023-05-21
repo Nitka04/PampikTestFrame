@@ -12,11 +12,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.BasePage;
-import pages.MainPage;
-import pages.RegestrationPage;
+import pages.LogInPage;
 
 
-public class PreconditionsRegestrationPageTest {
+public class PreconditionsLogInPageTest {
     static final Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
     protected WebDriver driver= DriverBase.startChromeDriver();
     protected BasePage basePage=new BasePage(driver);
@@ -24,11 +23,11 @@ public class PreconditionsRegestrationPageTest {
     protected Assertions assertions=new Assertions(driver);
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
-    protected MainPage mainPage=new MainPage(driver);
+    protected LogInPage logInPage =new LogInPage(driver);
     @BeforeMethod //скоріш за все потрібен @BeforeClass
     public void openPages(){
         logger.info("OPEN page");
-
+        logInPage.openPage();
     }
     @AfterMethod
     public void ClosePages(){
