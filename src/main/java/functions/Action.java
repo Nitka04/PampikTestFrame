@@ -34,10 +34,9 @@ public class Action {
 
     }
     public void sendKeysBy(By by,String string){
-        waiters.waitForVisabilityOfElement(by);
-        WebElement element=elements.findElement(by);
+        waiters.waitForElementToBeClickable(by);
         logger.info("Send keys: "+string);
-        actions.sendKeys(element, string).build().perform();
+        actions.sendKeys(elements.findElement(by), string).build().perform();
     }
    /* public void sendKeysButton(String nameOfButton) throws InterruptedException {
         Thread.sleep(2000);

@@ -53,8 +53,8 @@ public class Assertions {
         assertTrue(xpath.contains(expectedString), "String did not contain the required text:"+expectedString);
     }
     public  void equalsOfUrl(String urls,String expectedUrl){
-        logger.info("Checking if the  received URL equals:"+urls);
-        assertEquals(urls, expectedUrl, "The url is not that expected."+expectedUrl+"the real text are:");
+        logger.info("Checking if the  received URL equals: "+urls);
+        assertEquals(urls, expectedUrl, "The url is not that expected."+expectedUrl+" ,the real text are:");
     }
 
 

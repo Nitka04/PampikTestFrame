@@ -13,10 +13,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import pages.BasePage;
-import pages.LogInPage;
+import pages.RegistrationPage;
 
-
-public class PreconditionsLogInPageTest {
+public class PreconditionsRegistrationPageTest {
     static final Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
     protected WebDriver driver= DriverBase.startChromeDriver();
     protected BasePage basePage=new BasePage(driver);
@@ -24,11 +23,11 @@ public class PreconditionsLogInPageTest {
     protected Assertions assertions=new Assertions(driver);
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
-    protected LogInPage logInPage =new LogInPage(driver);
+    protected RegistrationPage regestrationPage=new RegistrationPage(driver);
     @BeforeMethod //скоріш за все потрібен @BeforeClass
     public void openPages(){
         logger.info("OPEN page");
-        logInPage.openPage();
+       regestrationPage.openPage();
     }
     @AfterMethod
     public void ClosePages(){
@@ -39,7 +38,7 @@ public class PreconditionsLogInPageTest {
         logger.info("CLOSING page");
         driver.quit();
     }
-    @DataProvider(name="incorrectPasswordOrLogIn")
+    @DataProvider(name="1")
     public Object[][] PassworAndLogIn() {
         return new Object[][]{
                 {"958656666","dfgsghwrt"},
