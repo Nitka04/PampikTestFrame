@@ -31,8 +31,12 @@ public class Assertions {
     }
     public void isSelected(String xpath){
         logger.info("Checking if Element Selected:" +xpath);
-        assertTrue(elements.isSelected(xpath),"The text is not selected.");}
-
+        assertTrue(elements.isSelected(xpath),"The text is not selected.");
+    }
+    public void isSelected(By by){
+        logger.info("Checking if Element Selected:" +by);
+        assertTrue(elements.isSelected(by),"The text is not selected.");
+    }
     public void isSelected(Boolean result){assertTrue(result, "The text is not selected.");
     }
 
@@ -49,7 +53,7 @@ public class Assertions {
     }
 
     public  void containsSomeText(String xpath,String expectedString){
-        logger.info("Checking if the  received text contains Some text." );
+        logger.info("Checking if the  received text contains part of text: "+expectedString );
         assertTrue(xpath.contains(expectedString), "String did not contain the required text:"+expectedString);
     }
     public  void equalsOfUrl(String urls,String expectedUrl){

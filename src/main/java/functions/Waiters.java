@@ -83,74 +83,60 @@ public class Waiters {
         logger.info("Wait for element to be clickable:" + element);
         waitForFunction(ExpectedConditions.elementToBeClickable(element), EXPLICITY_WAIT);
     }
-
     public void waitForElementToBeClickable(By by) {
         waitForFunction(ExpectedConditions.elementToBeClickable(driver.findElement(by)), EXPLICITY_WAIT);
     }
-
     //elementToBeSelected()
     public void waitForElementToBeSelected(By by) {
         waitForFunction(ExpectedConditions.elementToBeSelected(driver.findElement(by)), EXPLICITY_WAIT);
     }
-
     public void waitForElementToBeSelected(WebElement element) {
         waitForFunction(ExpectedConditions.elementToBeSelected(element), EXPLICITY_WAIT);
     }
-
     //presenceOfElementLocated()
     public WebElement waitForPresenceOfElementLocatedReturn(By by) {
         logger.info("Waiting for presence of elements located by: "+by.toString());
         return fluentWait(EXPLICITY_WAIT)
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
-
     public void waitForPresenceOfElementLocated(By by) {
         waitForFunction(ExpectedConditions.presenceOfElementLocated(by), EXPLICITY_WAIT);
     }
-
     //textToBePresentInElementValue
     public void waitFortextToBePresentInElementValue(WebElement element, String text) {
         waitForFunction(ExpectedConditions
                 .textToBePresentInElementValue(element, text), EXPLICITY_WAIT);
     }
-
     public void waitFortextToBePresentInElementValue(By by, String text) {
         waitForFunction(ExpectedConditions
                 .textToBePresentInElementValue(driver.findElement(by), text), EXPLICITY_WAIT);
     }
-
     //invisibilityOf()
     public void waitForInvisibilityOf(WebElement element) {
         waitForFunction(ExpectedConditions
                 .invisibilityOf(element), EXPLICITY_WAIT);
     }
-
     //titleContains()
     public void waitForTitleContains(String text) {
         waitForFunction(ExpectedConditions
                 .titleContains(text), EXPLICITY_WAIT);
     }
-
     //titleIs()
     public void waitForTitleIs(String text) {
         waitForFunction(ExpectedConditions
                 .titleIs(text), EXPLICITY_WAIT);
     }
-
     // elementSelectionStateToBe()
     public void waitForElementSelectionStateToBe(By by, boolean ExResult) {
         waitForFunction(ExpectedConditions.elementSelectionStateToBe(driver.findElement(by), ExResult), EXPLICITY_WAIT);
     }
-
     public void waitForElementSelectionStateToBe(WebElement element, boolean ExResult) {
         waitForFunction(ExpectedConditions.elementSelectionStateToBe(element, ExResult), EXPLICITY_WAIT);
     }
-
     //visibilityOfElementLocated()
     public void waitForElementSelectionStateToBe(By by) {
         waitForFunction(ExpectedConditions.visibilityOfElementLocated(by), EXPLICITY_WAIT);
     }
-
     public WebElement waitForElementSelectionStateToBeReturn(By by) {
         return fluentWait(EXPLICITY_WAIT)
                 .until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -172,7 +158,6 @@ public class Waiters {
                 .frameToBeAvailableAndSwitchToIt(By.xpath(xpath)), EXPLICITY_WAIT);
 
     }
-
     //alertIsPresent()
     public Alert waitAlertIsPresent() {
         return fluentWait(EXPLICITY_WAIT)
