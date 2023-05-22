@@ -14,6 +14,8 @@ public class FunctionsOfShopping extends BasePage{
     public FunctionsOfShopping(WebDriver driver) {super(driver);}
 
     private static class Locators {
+         private static By filterSelector=By.xpath("//ul[@id='language-bar']");
+         private static By SelectorOfGrowingPrice=By.xpath("//span[text()='ціною за зростанням']");
 
     }
     public static class Labels{
