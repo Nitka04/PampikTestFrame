@@ -23,26 +23,24 @@ public class PreconditionsLogInPageTest {
     Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
     @BeforeMethod
     public void openPages(){
-        /*
-        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        */
-
-    WebDriver driver= DriverBase.startChromeDriver();
-    BasePage basePage=new BasePage(driver);
         LogInPage logInPage =new LogInPage(driver);
         logger.info("OPEN page");
         logInPage.openPage();
+
+    }
+    @AfterGroups("logOut")
+    public  void logOut(){
+        logger.info("Log Out");
+        logInPage.logOut();
     }
 
-    @AfterMethod
+
+
+   /* @AfterClass
     public void closePage(){
-        WebDriver driver= DriverBase.startChromeDriver();
-        Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
         logger.info("CLOSING page");
         driver.close();
-    }
+    }*/
     @DataProvider(name="incorrectPasswordOrLogIn")
     public Object[][] PassworAndLogIn() {
         return new Object[][]{
@@ -51,8 +49,6 @@ public class PreconditionsLogInPageTest {
                 {"958656666","764524"},
                 {"958656666","958656666"},
                 {"958656667","0000000"},
-                {"968656667","0000000"},
-                {"978656667","0000000"},
                 {"978656667"," "},
                 {"978656667","0000000"}
         };

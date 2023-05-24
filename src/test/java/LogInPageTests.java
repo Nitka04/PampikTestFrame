@@ -6,17 +6,19 @@ import pages.LogInPage;
 import startProcess.PreconditionsLogInPageTest;
 
 public class LogInPageTests extends PreconditionsLogInPageTest {
-    @Test
+    @Test(groups = "logOut")
     public void logInInputCorrectInformationTest() throws InterruptedException {
         logInPage.inputPassword("0000000");
+        Thread.sleep(1000);
         logInPage.inputTelephone("958656666");
-          logInPage.pressButtonUVIYTI();
+        logInPage.pressButtonUVIYTI();
         Thread.sleep(2000);
         assertions.equalsOfUrl(logInPage.getCurrentUrl(), LogInPage.Labels.urlConfirmationToLoggedUser);
     }
-    @Test(dataProvider = "incorrectPasswordOrLogIn")
+    @Test (dataProvider = "incorrectPasswordOrLogIn")
     public void logInInputIncorrectInformationsTest(String telephone,String pasword) throws InterruptedException {
         logInPage.inputPassword(pasword);
+        Thread.sleep(1000);
         logInPage.inputTelephone(telephone);
         logInPage.pressButtonUVIYTI();
         Thread.sleep(1000);
@@ -30,4 +32,5 @@ public class LogInPageTests extends PreconditionsLogInPageTest {
         Thread.sleep(1000);
         assertions.equalsOfText(logInPage.getTextOfError(),LogInPage.Labels.conformationTextOfEmptyInputData);
     }
+
 }

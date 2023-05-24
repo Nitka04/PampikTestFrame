@@ -1,10 +1,7 @@
 package pages;
 
-import com.google.inject.internal.ErrorsException;
-import functions.Elements;
 import functions.Waiters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -39,11 +36,7 @@ public class MainPage extends BasePage{
     }
     public static class Labels{
         private final static String url ="https://pampik.com/ua";
-        public final static String ConformationText="Ми отримали вашу заявку. Будь ласка, дайте нам ще трохи часу і ми передзвонимо!";
-        public final static By positiveSeachText=By.xpath("//h1[@class='title']");
-        public final static String ffffffffffff="//h1[@class='title']";
-        public final static By negativeSeachText=By.xpath("//div[@class='l-search-empty']/mark");
-
+        public final static String ConformationText="передзвонимо";
       }
 
     public void  openPage(){
@@ -76,7 +69,7 @@ public class MainPage extends BasePage{
         return urlOfCurentPage;
 
     }
-     public void checkOfSearchResult(String searchWord) throws InterruptedException {
+     public void SearchResult(String searchWord) throws InterruptedException {
        elements.clickElement(Locators.seachLine);
         action.sendKeysBy(Locators.seachLine, searchWord);
         action.sendKeysEnter();

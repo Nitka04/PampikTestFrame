@@ -9,6 +9,7 @@ import startProcess.PreconditionsFunctionsOfShopping;
 
 public class FunctionsOfShoppingTests extends PreconditionsFunctionsOfShopping {
     static final Logger logger= LoggerFactory.getLogger(FunctionsOfShoppingTests.class);
+
     @Test
     public void filterForeIncreasePriceTest() throws InterruptedException {
         functionsOfShopping.chooseParametersFilterList();
@@ -24,7 +25,13 @@ public class FunctionsOfShoppingTests extends PreconditionsFunctionsOfShopping {
        waiters.waitForElementToBeClickable(FunctionsOfShopping.Labels.resetEverything);
     }
 
-    @Test
-    public void addFavirots(){}
+    @Test(dataProvider = "AddToFavorite")
+    public void addFavirots(String searchWord) throws InterruptedException {
+        functionsOfShopping.searchAddToFavorite(searchWord);
+        functionsOfShopping.openListOfFavorite();
+        System.out.println(functionsOfShopping.getTextFavoriteList()+"###########");
+        assertions.containsSomeText(functionsOfShopping.getTextFavoriteList().toLowerCase(),searchWord.toLowerCase());
+
+    }
 
 }

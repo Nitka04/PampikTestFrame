@@ -67,9 +67,8 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
         element.click();
     }
     public void clickElement(By by){
-        WebElement element=waiters.waitForPresenceOfElementLocatedReturn(by);
         logger.info("Click on element located by: "+by);
-        element.click();
+        waiters.waitForElementToBeClickableReturn(by).click();
     }
     public void clickElementByXpath(String xpath){
         findElement(By.xpath(xpath)).click();

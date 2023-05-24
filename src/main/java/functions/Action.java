@@ -53,6 +53,11 @@ public class Action {
         actions.sendKeys(Keys.ENTER).build().perform();
 
     }
+    public void mooveToElement(WebElement element) throws InterruptedException {
+        logger.info("Moove to element:"+element);
+        actions.moveToElement(element);
+
+    }
 
 
 

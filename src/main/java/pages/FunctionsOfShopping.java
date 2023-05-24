@@ -12,6 +12,8 @@ import java.util.Set;
 public class FunctionsOfShopping extends BasePage{
     Waiters waiters=new Waiters(driver);
     static final Logger logger = LoggerFactory.getLogger(FunctionsOfShopping.class);
+    protected LogInPage logInPage =new LogInPage(driver);
+    protected MainPage mainPage=new MainPage(driver);
     public FunctionsOfShopping(WebDriver driver) {super(driver);}
 
     private static class Locators {
@@ -26,6 +28,12 @@ public class FunctionsOfShopping extends BasePage{
 //Фильтры по категориям/подкатегориям
         private static By checkResultOfFilterText=By.xpath("//div[@id='filter-result']");
         private static By buttonShowTheresultOfFilter=By.xpath("//button[@class='cst-btn category-filter__push']");
+//addFaivorite
+        private static By addFavorite=By.xpath("//div[@class='wishlist-container']/a/span");
+        private static By buttonDodati=By.xpath("//form[@id='wishlist_add_form']/button");
+        private static By allFavoriteList=By.xpath("//span[@class='icon icon-d-heaet fave-link__icon']");
+        private static By listofAddedFavoritre=By.xpath("//ul[@class='listing tile-view new-listing']");
+
 
 
     }
@@ -120,12 +128,10 @@ public class FunctionsOfShopping extends BasePage{
         String textfromWeb = textfromFiltr.getText();
         int index=textfromWeb.indexOf(' ');
         String finalTextfromFiltr=textfromWeb.substring(0,index-1);
-        System.out.println(finalTextfromFiltr +"@@@@@@@@@@@@");
         return finalTextfromFiltr;
     }
     public String filterSelectorCheckText(){
         waiters.waitFortextToBePresentInElementValue(Locators.checkResultOfFilterText, "ВИБРАЛИ");
-        System.out.println(elements.getElementText(Locators.checkResultOfFilterText)+"#############");
         return elements.getElementText(Locators.checkResultOfFilterText);
     }
     public void ResultfiltrClickerText(String xpathTitle,String labelXpath) {
@@ -136,6 +142,34 @@ public class FunctionsOfShopping extends BasePage{
         wait.waitForVisabilityOfElement(Locators.buttonShowTheresultOfFilter);
         elements.clickElement(Locators.buttonShowTheresultOfFilter);
         waiters.waitForElementToBeClickable(Labels.resetEverything);
-
+    }
+    public void logIn(){
+        driver.get(LogInPage.Labels.urlConfirmationToLoggedUser);
+        logInPage.inputPassword("0000000");
+        logInPage.inputTelephone("958656666");
+        logInPage.pressButtonUVIYTI();
+    }
+    public void searchAddToFavorite(String searchWord) throws InterruptedException {
+        mainPage.SearchResult(searchWord);
+        Set<String> set1 = driver.getWindowHandles();
+        String descr1 = set1.iterator().next();
+        action.openPageInNewWindow(Locators.clickerProduct2);
+        Set<String> set2 = driver.getWindowHandles();
+        set2.removeAll(set1);
+        String descr2 = set2.iterator().next();
+        driver.switchTo().window(descr2);
+        waiters.waitForElementToBeClickable(Locators.addFavorite);
+        elements.clickElement(Locators.addFavorite);
+        elements.clickElement(Locators.buttonDodati);
+        driver.close();
+        driver.switchTo().window(descr1);
+    }
+    public void openListOfFavorite(){
+        waiters.waitForElementToBeClickable(Locators.allFavoriteList);
+        elements.clickElement(Locators.allFavoriteList);
+    }
+    public String getTextFavoriteList(){
+        String text=elements.getElementText(Locators.listofAddedFavoritre);
+        return text;
     }
 }

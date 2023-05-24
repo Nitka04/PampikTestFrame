@@ -9,12 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.FunctionsOfShopping;
+import pages.LogInPage;
 import pages.RegistrationPage;
 
 public class PreconditionsFunctionsOfShopping {
@@ -27,17 +25,21 @@ public class PreconditionsFunctionsOfShopping {
     protected Waiters waiters=new Waiters(driver);
     protected FunctionsOfShopping functionsOfShopping=new FunctionsOfShopping(driver);
 
-    @BeforeMethod
-   public void openPage(){
+
+    @BeforeClass
+   public void openPage() throws InterruptedException {
         logger.info("OPEN page");
         functionsOfShopping.openPage();
+        logger.info("LogIn");
+        functionsOfShopping.logIn();
+        Thread.sleep(3000);
     }
 
-    @AfterClass
+    /*@AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.quit();
-    }
+    }*/
     @DataProvider(name="FilterBoxTitle&LabelXpath")
     public Object[][] XpathStringFilter() {
         return new Object[][]{
@@ -48,6 +50,12 @@ public class PreconditionsFunctionsOfShopping {
                 {"//div[@data-filter-id='option-2']/div","//div[@data-filter-id='option-2']/div/following-sibling::*[1]/div[3]"}
         };
     }
-
+    @DataProvider(name="AddToFavorite")
+    public Object[][] WoardOfSearch() {
+        return new Object[][]{
+                {"ваги діагностичні"},
+                {"Термометр для ванної BabyOno"}
+        };
+    }
 
 }
