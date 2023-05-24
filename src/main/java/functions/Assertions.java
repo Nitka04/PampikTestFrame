@@ -33,6 +33,9 @@ public class Assertions {
         logger.info("Checking if Element Selected:" +xpath);
         assertTrue(elements.isSelected(xpath),"The text is not selected.");
     }
+    public void realizationOfConditionTrue(boolean bo,String failureOfConditionMeaning){
+        assertTrue(bo,failureOfConditionMeaning);
+    }
     public void isSelected(By by){
         logger.info("Checking if Element Selected:" +by);
         assertTrue(elements.isSelected(by),"The text is not selected.");

@@ -29,10 +29,6 @@ public class PreconditionsRegistrationPageTest {
         logger.info("OPEN page");
        regestrationPage.openPage();
     }
-    @AfterMethod
-    public void ClosePages(){
-        logger.info("OPEN page");
-    }
     @AfterClass
     public void closePage(){
         logger.info("CLOSING page");

@@ -8,36 +8,40 @@ import functions.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.LogInPage;
 
 
 public class PreconditionsLogInPageTest {
-    static final Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
     protected WebDriver driver= DriverBase.startChromeDriver();
-    protected BasePage basePage=new BasePage(driver);
-    protected Action action=new Action(driver);
+    protected LogInPage logInPage =new LogInPage(driver);
+   protected Action action=new Action(driver);
     protected Assertions assertions=new Assertions(driver);
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
-    protected LogInPage logInPage =new LogInPage(driver);
-    @BeforeMethod //скоріш за все потрібен @BeforeClass
+    Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
+    @BeforeMethod
     public void openPages(){
+        /*
+        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        */
+
+    WebDriver driver= DriverBase.startChromeDriver();
+    BasePage basePage=new BasePage(driver);
+        LogInPage logInPage =new LogInPage(driver);
         logger.info("OPEN page");
         logInPage.openPage();
     }
+
     @AfterMethod
-    public void ClosePages(){
-        logger.info("OPEN page");
-    }
-    @AfterClass
     public void closePage(){
+        WebDriver driver= DriverBase.startChromeDriver();
+        Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
         logger.info("CLOSING page");
-        driver.quit();
+        driver.close();
     }
     @DataProvider(name="incorrectPasswordOrLogIn")
     public Object[][] PassworAndLogIn() {

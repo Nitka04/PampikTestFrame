@@ -1,9 +1,11 @@
+import functions.Assertions;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.LogInPage;
 import startProcess.PreconditionsLogInPageTest;
 
 public class LogInPageTests extends PreconditionsLogInPageTest {
-
     @Test
     public void logInInputCorrectInformationTest() throws InterruptedException {
         logInPage.inputPassword("0000000");

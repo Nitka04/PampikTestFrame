@@ -33,6 +33,10 @@ public class Action {
         actions.sendKeys(element,string).build().perform();
 
     }
+    public void openPageInNewWindow(By by){
+        actions.keyDown(Keys.CONTROL).click(elements.findElement(by)).keyUp(Keys.CONTROL).perform();
+    }
+
     public void sendKeysBy(By by,String string){
         waiters.waitForElementToBeClickable(by);
         logger.info("Send keys: "+string);

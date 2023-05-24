@@ -74,10 +74,6 @@ public class PreconditionsMainPageTest {
         mainPage.openPage();
 
     }
-    @AfterMethod
-    public void ClosePages(){
-        logger.info("OPEN page");
-}
     @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
