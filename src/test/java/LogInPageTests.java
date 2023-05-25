@@ -1,7 +1,4 @@
-import functions.Assertions;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.BasePage;
 import pages.LogInPage;
 import startProcess.PreconditionsLogInPageTest;
 
@@ -18,10 +15,10 @@ public class LogInPageTests extends PreconditionsLogInPageTest {
     }
     @Test (priority =1,
             dataProvider = "incorrectPasswordOrLogIn")
-    public void logInInputIncorrectInformationsTest(String telephone,String pasword) throws InterruptedException {
+    public void logInInputIncorrectInformationsTest(String telephoneNumber, String pasword) throws InterruptedException {
         logInPage.inputPassword(pasword);
         Thread.sleep(1000);
-        logInPage.inputTelephone(telephone);
+        logInPage.inputTelephone(telephoneNumber);
         logInPage.pressButtonUVIYTI();
         Thread.sleep(1000);
         assertions.equalsOfText(logInPage.getTextOfError(),LogInPage.Labels.conformationTextOfWrongInputData);
