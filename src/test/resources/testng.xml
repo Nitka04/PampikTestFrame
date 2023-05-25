@@ -3,6 +3,9 @@
     <test name="AllTestCases">
         <classes>
             <class name="LogInPageTests"/>
+            <class name="MainPageTests"/>
+            <class name="RegistrationPageTest"/>
+            <class name="FunctionsOfShoppingTests"/>
         </classes>
     </test>
 </suite>

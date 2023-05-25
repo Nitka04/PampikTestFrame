@@ -24,8 +24,6 @@ public class PreconditionsFunctionsOfShopping {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     protected FunctionsOfShopping functionsOfShopping=new FunctionsOfShopping(driver);
-
-
     @BeforeClass
    public void openPage() throws InterruptedException {
         logger.info("OPEN page");
@@ -34,12 +32,15 @@ public class PreconditionsFunctionsOfShopping {
         functionsOfShopping.logIn();
         Thread.sleep(3000);
     }
-
-    /*@AfterClass
+    @AfterGroups("ClearTheListOfFavorite")
+    public void clearItemsFromList() throws InterruptedException {
+       functionsOfShopping.clearTheListOfFavorite();
+    }
+    @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.quit();
-    }*/
+    }
     @DataProvider(name="FilterBoxTitle&LabelXpath")
     public Object[][] XpathStringFilter() {
         return new Object[][]{

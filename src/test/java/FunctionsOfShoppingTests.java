@@ -1,10 +1,7 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-import org.testng.annotations.TestInstance;
 import pages.FunctionsOfShopping;
-import pages.LogInPage;
-import pages.RegistrationPage;
 import startProcess.PreconditionsFunctionsOfShopping;
 
 public class FunctionsOfShoppingTests extends PreconditionsFunctionsOfShopping {
@@ -25,13 +22,12 @@ public class FunctionsOfShoppingTests extends PreconditionsFunctionsOfShopping {
        waiters.waitForElementToBeClickable(FunctionsOfShopping.Labels.resetEverything);
     }
 
-    @Test(dataProvider = "AddToFavorite")
-    public void addFavoritesTest(String searchWord) throws InterruptedException {
-        functionsOfShopping.searchAddToFavorite(searchWord);
+    @Test(dataProvider = "AddToFavorite",
+    groups = "ClearTheListOfFavorite")
+    public void addFavoritesTest(String searchWordInterestedProduct) throws InterruptedException {
+        functionsOfShopping.searchAddToFavorite(searchWordInterestedProduct);
         functionsOfShopping.openListOfFavorite();
-        System.out.println(functionsOfShopping.getTextFavoriteList()+"###########");
-        assertions.containsSomeText(functionsOfShopping.getTextFavoriteList().toLowerCase(),searchWord.toLowerCase());
-
+        assertions.containsSomeText(functionsOfShopping.getTextFavoriteList().toLowerCase(), searchWordInterestedProduct.toLowerCase());
     }
 
 }

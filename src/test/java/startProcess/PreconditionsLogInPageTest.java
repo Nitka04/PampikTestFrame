@@ -21,20 +21,17 @@ public class PreconditionsLogInPageTest {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
-    @BeforeMethod
+    @BeforeClass
     public void openPages(){
         LogInPage logInPage =new LogInPage(driver);
         logger.info("OPEN page");
         logInPage.openPage();
-
     }
     @AfterGroups("logOut")
     public  void logOut(){
         logger.info("Log Out");
         logInPage.logOut();
     }
-
-
 
     @AfterClass
     public void closePage(){

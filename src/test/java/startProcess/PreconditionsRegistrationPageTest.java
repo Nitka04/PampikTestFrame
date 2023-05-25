@@ -8,10 +8,7 @@ import functions.Waiters;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.RegistrationPage;
 
@@ -24,7 +21,7 @@ public class PreconditionsRegistrationPageTest {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     protected RegistrationPage regestrationPage=new RegistrationPage(driver);
-    @BeforeMethod //скоріш за все потрібен @BeforeClass
+    @BeforeClass
     public void openPages(){
         logger.info("OPEN page");
        regestrationPage.openPage();

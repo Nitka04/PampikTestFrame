@@ -33,8 +33,7 @@ public class FunctionsOfShopping extends BasePage{
         private static By buttonDodati=By.xpath("//form[@id='wishlist_add_form']/button");
         private static By allFavoriteList=By.xpath("//span[@class='icon icon-d-heaet fave-link__icon']");
         private static By listofAddedFavoritre=By.xpath("//ul[@class='listing tile-view new-listing']");
-
-
+        private static By crossDeleteItemFavoritre =By.xpath("//button[@class='close remove-item']");
 
     }
     public static class Labels{
@@ -171,5 +170,15 @@ public class FunctionsOfShopping extends BasePage{
     public String getTextFavoriteList(){
         String text=elements.getElementText(Locators.listofAddedFavoritre);
         return text;
+    }
+
+    public void clearTheListOfFavorite() throws InterruptedException {
+        waiters.waitForElementToBeClickable(Locators.crossDeleteItemFavoritre);
+        elements.clickElement(Locators.crossDeleteItemFavoritre);
+        Thread.sleep(2000);
+        waiters.waitForElementToBeClickable(Locators.crossDeleteItemFavoritre);
+        elements.clickElement(Locators.crossDeleteItemFavoritre);
+        Thread.sleep(2000);
+
     }
 }

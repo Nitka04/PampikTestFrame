@@ -68,11 +68,10 @@ public class PreconditionsMainPageTest {
         };
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void openPages(){
         logger.info("OPEN page");
         mainPage.openPage();
-
     }
     @AfterClass
     public void closePage(){
