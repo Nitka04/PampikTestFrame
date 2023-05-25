@@ -6,7 +6,8 @@ import pages.LogInPage;
 import startProcess.PreconditionsLogInPageTest;
 
 public class LogInPageTests extends PreconditionsLogInPageTest {
-    @Test(groups = "logOut")
+    @Test(priority = 3,
+            groups = "logOut")
     public void logInInputCorrectInformationTest() throws InterruptedException {
         logInPage.inputPassword("0000000");
         Thread.sleep(1000);
@@ -15,7 +16,8 @@ public class LogInPageTests extends PreconditionsLogInPageTest {
         Thread.sleep(2000);
         assertions.equalsOfUrl(logInPage.getCurrentUrl(), LogInPage.Labels.urlConfirmationToLoggedUser);
     }
-    @Test (dataProvider = "incorrectPasswordOrLogIn")
+    @Test (priority =1,
+            dataProvider = "incorrectPasswordOrLogIn")
     public void logInInputIncorrectInformationsTest(String telephone,String pasword) throws InterruptedException {
         logInPage.inputPassword(pasword);
         Thread.sleep(1000);
@@ -24,7 +26,7 @@ public class LogInPageTests extends PreconditionsLogInPageTest {
         Thread.sleep(1000);
         assertions.equalsOfText(logInPage.getTextOfError(),LogInPage.Labels.conformationTextOfWrongInputData);
     }
-    @Test
+    @Test(priority = 2)
     public void leaveEmptyInPutOfTelephonTest() throws InterruptedException {
         logInPage.inputPassword("09878");
         logInPage.inputTelephone("");

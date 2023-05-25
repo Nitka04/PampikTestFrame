@@ -36,11 +36,11 @@ public class PreconditionsLogInPageTest {
 
 
 
-   /* @AfterClass
+    @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.close();
-    }*/
+    }
     @DataProvider(name="incorrectPasswordOrLogIn")
     public Object[][] PassworAndLogIn() {
         return new Object[][]{
