@@ -61,6 +61,7 @@ public class FunctionsOfShopping extends BasePage{
         Double massivOpPrices []=new Double[4];
         Set<String> set1 = driver.getWindowHandles();
         String descr1 = set1.iterator().next();
+        waiters.waitForElementToBeClickable(Locators.clickerProduct1);
         action.openPageInNewWindow(Locators.clickerProduct1);
         Set<String> set2 = driver.getWindowHandles();
         set2.removeAll(set1);
@@ -131,22 +132,30 @@ public class FunctionsOfShopping extends BasePage{
     }
     public String filterSelectorCheckText(){
         waiters.waitFortextToBePresentInElementValue(Locators.checkResultOfFilterText, "ВИБРАЛИ");
-        return elements.getElementText(Locators.checkResultOfFilterText);
+        waiters.waitForElementToBeClickable(By.xpath("//div[@id='filter-result']/a"));
+        String text=elements.getElementText(Locators.checkResultOfFilterText);
+        return text;
     }
     public void ResultfiltrClickerText(String xpathTitle,String labelXpath) {
-        waiters.waitForElementToBeClickableReturn(By.xpath(xpathTitle));
+        waiters.waitForElementToBeClickable(By.xpath(xpathTitle));
         elements.clickElementByXpath(xpathTitle);
         waiters.waitForElementToBeClickable(By.xpath(labelXpath));
         elements.clickElementByXpath(labelXpath);
         wait.waitForVisabilityOfElement(Locators.buttonShowTheresultOfFilter);
         elements.clickElement(Locators.buttonShowTheresultOfFilter);
-        waiters.waitForElementToBeClickable(Labels.resetEverything);
+        waiters.waitForElementToBeClickable(By.xpath("//div[@id='filter-result']/a"));
     }
-    public void logIn(){
+    public void resetFiltr(){
+        waiters.waitForElementToBeClickable(Labels.resetEverything);
+        elements.clickElement(Labels.resetEverything);
+
+    }
+    public void logIn() throws InterruptedException {
         driver.get(LogInPage.Labels.urlConfirmationToLoggedUser);
         logInPage.inputPassword("0000000");
         logInPage.inputTelephone("958656666");
         logInPage.pressButtonUVIYTI();
+        Thread.sleep(2000);
     }
     public void searchAddToFavorite(String searchWord) throws InterruptedException {
         mainPage.SearchResult(searchWord);

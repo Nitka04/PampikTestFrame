@@ -41,6 +41,7 @@ public class LogInPage extends BasePage {
     }
     public void pressButtonUVIYTI(){
         elements.clickElement(Locators.buttonUVIYTI);
+
     }
 
     public void logOut(){

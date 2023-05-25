@@ -21,16 +21,16 @@ public class PreconditionsRegistrationPageTest {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     protected RegistrationPage regestrationPage=new RegistrationPage(driver);
-    @BeforeClass
+    @BeforeMethod
     public void openPages(){
         logger.info("OPEN page");
        regestrationPage.openPage();
     }
-    @AfterClass
+  /*  @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.quit();
-    }
+    }*/
     @DataProvider(name="alreadyRegistratedUser")
     public Object[][] dataUser() {
         return new Object[][]{

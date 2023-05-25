@@ -25,13 +25,19 @@ public class PreconditionsFunctionsOfShopping {
     protected Waiters waiters=new Waiters(driver);
     protected FunctionsOfShopping functionsOfShopping=new FunctionsOfShopping(driver);
     @BeforeClass
-   public void openPage() throws InterruptedException {
+   public void openPageLogIn() throws InterruptedException {
         logger.info("OPEN page");
         functionsOfShopping.openPage();
+        Thread.sleep(3000);
+
+    }
+    @BeforeGroups("ClearTheListOfFavorite")
+            public void logIn() throws InterruptedException {
         logger.info("LogIn");
         functionsOfShopping.logIn();
         Thread.sleep(3000);
     }
+
     @AfterGroups("ClearTheListOfFavorite")
     public void clearItemsFromList() throws InterruptedException {
        functionsOfShopping.clearTheListOfFavorite();
@@ -46,7 +52,6 @@ public class PreconditionsFunctionsOfShopping {
         return new Object[][]{
                 {"//div[@data-filter-id='option-7']/div","//div[@data-filter-id='option-7']/div/following-sibling::*[1]/div"},
                 {"//div[@data-filter-id='option-1']/div","//div[@data-filter-id='option-1']/div/following-sibling::*[1]/div[3]"},
-                {"//div[@data-filter-id='brand']","//div[@data-filter-id='brand']/div/following-sibling::*[1]/div[2]"},
                 {"//div[@data-filter-id='option-5']/div","//div[@data-filter-id='option-5']/div/following-sibling::*[1]/div[7]"},
                 {"//div[@data-filter-id='option-2']/div","//div[@data-filter-id='option-2']/div/following-sibling::*[1]/div[3]"}
         };

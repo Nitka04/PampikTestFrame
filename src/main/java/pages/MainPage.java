@@ -72,6 +72,7 @@ public class MainPage extends BasePage{
      public void SearchResult(String searchWord) throws InterruptedException {
        elements.clickElement(Locators.seachLine);
         action.sendKeysBy(Locators.seachLine, searchWord);
+        waiters.waitFortextToBePresentInElementValue(Locators.seachLine, searchWord);
         action.sendKeysEnter();
 
      }

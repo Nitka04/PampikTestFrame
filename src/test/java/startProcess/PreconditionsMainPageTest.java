@@ -68,15 +68,15 @@ public class PreconditionsMainPageTest {
         };
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void openPages(){
         logger.info("OPEN page");
         mainPage.openPage();
     }
-    @AfterClass
+    /*@AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.quit();
-    }
+    }*/
 
 }

@@ -38,7 +38,6 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
         return null;
 
     }
-
     public String getElementText(WebElement element){
         waiters.waitForVisabilityOfElement(element);
         logger.info("Getting text from element:"+element);
@@ -71,7 +70,8 @@ static final Logger logger = LoggerFactory.getLogger(Elements.class);
         waiters.waitForElementToBeClickableReturn(by).click();
     }
     public void clickElementByXpath(String xpath){
-        findElement(By.xpath(xpath)).click();
+        WebElement element=findElement(By.xpath(xpath));
+        element.click();
     }
 
     public void clickElementInsideFrameXpath(String xpathFrame,String xpathElement){

@@ -21,7 +21,7 @@ public class PreconditionsLogInPageTest {
     protected Elements elements=new Elements(driver);
     protected Waiters waiters=new Waiters(driver);
     Logger logger= LoggerFactory.getLogger(PreconditionsMainPageTest.class);
-    @BeforeClass
+    @BeforeMethod
     public void openPages(){
         LogInPage logInPage =new LogInPage(driver);
         logger.info("OPEN page");
@@ -33,11 +33,11 @@ public class PreconditionsLogInPageTest {
         logInPage.logOut();
     }
 
-    @AfterClass
+  /*  @AfterClass
     public void closePage(){
         logger.info("CLOSING page");
         driver.close();
-    }
+    }*/
     @DataProvider(name="incorrectPasswordOrLogIn")
     public Object[][] PassworAndLogIn() {
         return new Object[][]{
