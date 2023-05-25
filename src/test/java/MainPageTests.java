@@ -12,10 +12,10 @@ public class MainPageTests extends PreconditionsMainPageTest {
        }
 
        //не работающий тест после обновления исчезла кнопка онлаин связи через мессенджер
-       /*@Test(dataProvider = "urlOnlineSupportCheck")//WORKING
+       @Test(dataProvider = "urlOnlineSupportCheck")//WORKING
     public void TestOfMessengerUrl(String xpath,String urlOnlineSupportCheck) throws InterruptedException {
            assertions.containsSomeText( mainPage.getUrlFromOpenWindow(xpath),urlOnlineSupportCheck);
-       }*/
+       }
 
       @Test(dataProvider = "searchResults")//WORKING
       public void TestofSearchResults(String searchWord, String expectedWord) throws InterruptedException, NoSuchElementException {
